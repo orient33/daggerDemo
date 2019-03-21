@@ -4,6 +4,10 @@ import android.content.Context
 import android.util.Log
 import android.widget.Toast
 
+fun log(msg: String) {
+    Log.i("df", msg)
+}
+
 fun log(msg: String, tag: String = "df") {
     Log.d(tag, msg)
 }
