@@ -1,18 +1,19 @@
 package com.example.daggerdemo;
 
 import android.annotation.SuppressLint;
-
-import androidx.lifecycle.LifecycleOwner;
-
+import android.arch.lifecycle.LifecycleOwner;
 import android.os.AsyncTask;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.media.MediaDescriptionCompat;
+
+import com.example.daggerdemo.di.ActivityScoped;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
+@ActivityScoped
 public class MainPresenter implements MainContract.Presenter {
 
     private final Model mModel;
@@ -21,6 +22,7 @@ public class MainPresenter implements MainContract.Presenter {
     @Nullable
     private AsyncTask<Void, Void, List<MediaDescriptionCompat>> mTask;
 
+    @Inject
     MainPresenter(Model model) {
         mModel = model;
     }

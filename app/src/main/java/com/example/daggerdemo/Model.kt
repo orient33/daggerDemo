@@ -3,7 +3,7 @@ package com.example.daggerdemo
 import android.content.Context
 import android.provider.BaseColumns
 import android.provider.MediaStore
-import androidx.annotation.WorkerThread
+import android.support.annotation.WorkerThread
 import android.support.v4.media.MediaDescriptionCompat
 import java.util.*
 import java.util.Collections.emptyList

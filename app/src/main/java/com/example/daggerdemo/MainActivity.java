@@ -4,29 +4,28 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.media.MediaDescriptionCompat;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
-import androidx.core.app.ActivityCompat;
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import dagger.android.support.DaggerAppCompatActivity;
 
-public class MainActivity extends AppCompatActivity implements MainContract.View {
+public class MainActivity extends DaggerAppCompatActivity implements MainContract.View {
     private final static int REQ_CODE_PERMISSION = 1;
+
+    @Inject
     MainContract.Presenter mPresenter;
 
     @BindView(R.id.listView)
@@ -41,7 +40,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        mPresenter = new MainPresenter(new Model(getApplicationContext()));
+//        mPresenter = new MainPresenter(new Model(getApplicationContext()));
+        assert mPresenter != null;
         getLifecycle().addObserver(mPresenter);
         adapter = new MyAdapter();
         listView.setAdapter(adapter);
